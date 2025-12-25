@@ -1,0 +1,88 @@
+{
+  "layer": "top",
+  "margin-left": 3,
+  "margin-right": 3,
+  "margin-top": 2,
+  "modules-left": [
+    "hyprland/workspaces"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "tray",
+    "bluetooth",
+    "pulseaudio",
+    "network",
+    "hyprland/language",
+    "battery"
+  ],
+  "battery": {
+    "interval": 60,
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "max-length": 25
+  },
+  "bluetooth": {
+    "format": "",
+    "format-disabled": "󰂲",
+    "format-connected": " {device_alias}",
+    "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+    "on-click": "blueman-manager"
+  },
+  "tray": {
+    "icon-size": 16,
+    "spacing": 10,
+    "icons": {
+      "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
+    }
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-bluetooth": "{icon} {volume}%",
+    "format-muted": "",
+    "format-icons": {
+      "default": [
+        "",
+        ""
+      ]
+    },
+    "scroll-step": 1,
+    "on-click": "pavucontrol",
+    "ignored-sinks": [
+      "Easy Effects Sink"
+    ]
+  },
+  "network": {
+    "interface": "wlan0",
+    "format": "{ifname}",
+    "format-wifi": " {signalStrength}%",
+    "format-disconnected": "NONE ", //An empty format will hide the module.
+    "max-length": 50
+  },
+  "hyprland/language": {
+    "format-en": "EN",
+    "format-ru": "RU",
+    "format-uk": "UA"
+  },
+  "clock": {
+    "format-alt": "{:%d.%m.%y %H:%M}"
+  }
+}
+
+
+

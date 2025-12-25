@@ -1,0 +1,50 @@
+* {
+  font-family: "JetBrainsMono Nerd Font Propo", "SF Pro Display";
+  min-height: 0;
+  margin: 0 0;
+  padding: 1px 0;
+  font-size: 13px;
+}
+
+window#waybar {
+  background-color: transparent;
+}
+
+#workspaces button {
+  padding: 0 6px;
+  margin: 0 3px;
+  font-size: 12px;
+  margin: 0 3px;
+  border-radius: 40px;
+  color: transparent;
+  background-color: alpha(#121212, 0.5);
+  transition: all 0.3s ease-in-out;
+}
+
+#workspaces button.active {
+  min-width: 50px;
+  color: #e8e8e8;
+  background-color: alpha(#232323, 0.8);
+  transition: all 0.3s ease-in-out;
+}
+
+#workspaces button:hover {
+  color: #121212;
+  background-color: #e8e8e8;
+  min-width: 50px;
+}
+
+#clock,
+#tray,
+#bluetooth,
+#network,
+#pulseaudio,
+#language,
+#battery {
+  margin: 0 3px;
+  background-color: alpha(#232323, 0.8);
+  color: #e8e8e8;
+  padding: 0 10px;
+  border-radius: 50px;
+  border: 2px;
+}
