@@ -1,0 +1,9 @@
+backend = "full"
+color_space = "lab"
+check_contrast = true
+filter = "saturate(20)"
+
+[[entry]]
+# ПРЯМОЙ ПУТЬ К ШАБЛОНУ
+template = "/home/yshine/.config/wallust/templates/terminal-colors.conf"
+target = "/home/yshine/.config/kitty/colors.conf"

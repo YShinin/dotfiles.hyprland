@@ -10,18 +10,19 @@
 # windowrule = float,class:^(kitty)$,title:^(kitty)$
 
 # Ignore maximize requests from apps. You'll probably like this.
-windowrule = match:class .*, suppress_event maximize 
+windowrule = suppressevent maximize, class:.*
 
-layerrule = match:title swaync-control-center, blur on 
-layerrule = match:title  swaync-control-center, ignore_alpha 0.5
+layerrule = blur, swaync-control-center
+layerrule = ignorealpha 0.5, swaync-control-center
 # layerrule = ignorezero, swaync-control-center
 
-layerrule = match:title swaync-notification-window, blur on
-layerrule = match:title  swaync-notification-window, ignore_alpha 0.5
+layerrule = blur, swaync-notification-window
+layerrule = ignorealpha 0.5, swaync-notification-window
+# layerrule = ignorezero, swaync-notification-window
 
 xwayland {
     force_zero_scaling = true
 }
 
 # Fix some dragging issues with XWayland
-# windowrule = match:class ^$ match:title ^$,xwayland 1 floating 1 fullscreen 0 pinned 0 nofocus
+windowrule = nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0

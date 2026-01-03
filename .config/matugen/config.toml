@@ -1,0 +1,14 @@
+[config]
+default_mode = "dark"
+filter_mode = "expressive"
+
+[templates.kitty]
+# Путь относительно ~/.config/matugen/
+input_path = 'templates/kitty.conf'
+# Выходим из .config/matugen/ (два шага назад) и заходим в .cache
+output_path = '../../.cache/matugen/kitty.conf'
+
+[templates.hyprland]
+input_path = '~/.config/matugen/templates/hyprland-colors.conf'
+output_path = '~/.config/hypr/hypr-colors.conf'
+post_hook = 'hyprctl reload'
