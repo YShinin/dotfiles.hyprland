@@ -2,7 +2,10 @@
     width: 600;
     font: "JetBrainsMono Nerd Font 14";
 }
-@import                          "./colors.rasi"
+
+@import "./colors.rasi"
+@import "./fonts.rasi"
+
 element-text, element-icon, mode-switcher {
     background-color: inherit;
     text-color: inherit;
@@ -14,20 +17,20 @@ element-text, element-icon, mode-switcher {
 window {
     border: 3px;
     border-color: transparent;
-    background-color: @background;
+    background-color: @surface;
     border-radius: 20px;
     padding: 0px 20px 0px 0px;
     font: @font;
 }
 
 mainbox {
-    background-color: @background;
+    background-color: @surface;
     font: @font;
 }
 
 inputbar {
     children: [prompt, entry];
-    background-color: @background;
+    background-color: @surface;
     border-radius: 5px;
     padding: 2px;
     font: @font;
@@ -35,9 +38,9 @@ inputbar {
 
 prompt {
     enabled: false;
-    background-color: @selected;
+    background-color: @tertiary;
     padding: 5px;
-    text-color: @background;
+    text-color: @surface;
     border-radius: 5px;
     text-align: center;
     margin: 0px;
@@ -53,8 +56,8 @@ textbox-prompt-colon {
 entry {
     padding: 0px 10px 8px 10px;  
     margin: 15px 0px 0px 15px;
-    text-color: @foreground;
-    background-color: @background;
+    text-color: @primary;
+    background-color: @surface;
     line-height: 30px;   
     font: @font;
     cursor-width: 11;
@@ -65,7 +68,7 @@ listview {
     padding: 4px 0px 13px;
     margin: 0px 0px 0px 20px;
     columns: 2;
-    background-color: @background;
+    background-color: @surface;
     fixed-height: false;
     lines: 7;
     border-radius: 0px;
@@ -76,8 +79,8 @@ element {
     padding: 5px;
     border-radius: 15px;
     font: @font;
-    background-color: @background;
-    text-color: @foreground;
+    background-color: @surface;
+    text-color: @primary;
 }
 
 element-icon {
@@ -87,9 +90,9 @@ element-icon {
 }
 
 element selected {
-    background-color: @selected;
+    background-color: @tertiary;
     border-radius: 15px;
-    text-color: @background;
+    text-color: @surface;
     font: @font;
 }
 
