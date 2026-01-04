@@ -17,20 +17,21 @@ element-text, element-icon, mode-switcher {
 window {
     border: 3px;
     border-color: transparent;
-    background-color: @surface;
+    transparency: "real";
+    background-color: @surface-alpha;
     border-radius: 20px;
     padding: 0px 20px 0px 0px;
     font: @font;
 }
 
 mainbox {
-    background-color: @surface;
+    background-color: transparent;
     font: @font;
 }
 
 inputbar {
     children: [prompt, entry];
-    background-color: @surface;
+    background-color: transparent;
     border-radius: 5px;
     padding: 2px;
     font: @font;
@@ -57,18 +58,19 @@ entry {
     padding: 0px 10px 8px 10px;  
     margin: 15px 0px 0px 15px;
     text-color: @primary;
-    background-color: @surface;
+    background-color: transparent;
     line-height: 30px;   
     font: @font;
-    cursor-width: 11;
+    cursor-width: 3px;
+    placeholder: "search here";
+    placeholder-color: @tertiary-alpha;
 }
 
 listview {
     border: 0px;
     padding: 4px 0px 13px;
+    background-color: transparent;
     margin: 0px 0px 0px 20px;
-    columns: 2;
-    background-color: @surface;
     fixed-height: false;
     lines: 7;
     border-radius: 0px;
@@ -79,7 +81,7 @@ element {
     padding: 5px;
     border-radius: 15px;
     font: @font;
-    background-color: @surface;
+    background-color: transparent;
     text-color: @primary;
 }
 
