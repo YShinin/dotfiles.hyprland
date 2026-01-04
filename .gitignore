@@ -1,1 +1,4 @@
 **/local.conf
+.config/rofi/colors.rasi
+.config/waybar/colors.css
+.config/hypr/hypr-colors.conf

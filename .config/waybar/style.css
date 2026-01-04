@@ -6,10 +6,7 @@
   margin: 0 0;
   padding: 1px 0;
   font-size: 13px;
-  
-  /* white fix */
-  background-image: none; 
-  box-shadow: none;       
+
 }
 
 window#waybar {
@@ -38,6 +35,10 @@ window#waybar {
   color: @surface_bright;
   background-color: @primary;
   min-width: 50px;
+  transition: all 0.3s ease-in-out;
+  /* white fix */
+  background-image: none;
+  box-shadow: none;
 }
 
 #clock {
@@ -50,16 +51,30 @@ window#waybar {
   transition: all 0.3s ease-in-out;
 }
 
+tooltip {
+  background-color: alpha(@surface_dim, 0.8);
+  border-radius: 10px;
+}
+
+tooltip label {
+  color: @tertiary;
+  margin: 10px 10px;
+}
+
+tooltip calendar {
+  font-size: 33px;
+}
+
 #tray,
 #bluetooth,
 #network,
 #pulseaudio,
 #language,
 #battery {
-  margin: 0 3px;
-  padding: 0 5px;
-  border-radius: 30px;
-  border: 2px;
+  margin: 0 2px;
+  padding: 0 7px;
+  border-radius: 15px;
+  transition: all 0.3s ease-in-out;
 }
 
 .modules-right {
@@ -69,10 +84,9 @@ window#waybar {
   padding: 0 5px;
   border-radius: 50px;
   border: 2px;
-  transition: all 0.3s ease-in-out;
 }
 
-#tray{
+#tray {
   color: #e8e8e8;
 }
 

@@ -1,0 +1,56 @@
+/* ~/.config/rofi/wifi-menu.rasi */
+
+configuration {
+    font: "JetBrains Mono Nerd Font 12"; /* Замените на свой шрифт */
+}
+
+window {
+    width: 350px;            /* Ширина меню */
+    border: 2px;
+    border-color: #bd93f9;   /* Цвет рамки (например, фиолетовый) */
+    border-radius: 10px;     /* Скругление */
+    padding: 10px;
+    background-color: #282a36; /* Цвет фона */
+    text-color: #f8f8f2;
+}
+
+inputbar {
+    children: [prompt, entry];
+    background-color: transparent;
+    padding: 5px;
+}
+
+prompt {
+    background-color: transparent;
+    text-color: #bd93f9;
+    padding: 0 10px 0 0;
+}
+
+entry {
+    background-color: transparent;
+    text-color: #f8f8f2;
+}
+
+listview {
+    lines: 8;                /* Количество строк */
+    scrollbar: false;
+    background-color: transparent;
+    margin: 10px 0 0 0;
+}
+
+element {
+    padding: 8px;
+    border-radius: 6px;
+    background-color: transparent;
+    text-color: #f8f8f2;
+}
+
+element selected {
+    background-color: #44475a; /* Цвет выделения */
+    text-color: #ffffff;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+}

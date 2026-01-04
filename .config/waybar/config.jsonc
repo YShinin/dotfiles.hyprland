@@ -35,14 +35,16 @@
   },
   "bluetooth": {
     "format": "",
-    "format-disabled": "󰂲",
+    "format-disabled": "Disabled 󰂲",
+    "format-off": "󰂲",
     "format-connected": " {device_alias}",
     "format-connected-battery": " {device_alias} {device_battery_percentage}%",
     "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
     "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
-    "on-click": "blueman-manager"
+    "on-click": "$HOME/.config/waybar/bluetooth.sh",
+    "on-click-right": "blueman-manager"
   },
   "tray": {
     "icon-size": 16,
@@ -62,7 +64,8 @@
       ]
     },
     "scroll-step": 1,
-    "on-click": "pavucontrol",
+    "on-click": "$HOME/.config/waybar/audio.sh",
+    "on-click-right": "pavucontrol",
     "ignored-sinks": [
       "Easy Effects Sink"
     ]
@@ -74,6 +77,7 @@
     "format-linked": "󰈁 NO_IP",
     "format-disconnected": "NO CONNECTION",
     "format-wifi": " {signalStrength}%",
+    "on-click": "exec $HOME/.config/waybar/wifi.sh",
     "max-length": 50
   },
   "hyprland/language": {
@@ -84,18 +88,14 @@
   "clock": {
     "format": "{:%d.%m.%y %H:%M}",
     "format-alt": "{:%H:%M}",
-    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "tooltip-format": "{calendar}",
     "calendar": {
-        "mode": "months",
+        "mode": "month",
         "mode-mon-col": 3,
-        "weeks-pos": "right",
         "on-scroll": 1,
         "format": {
-            "months": "<span color='#ffead3'><b>{}</b></span>",
-            "days": "<span color='#ecc6d9'><b>{}</b></span>",
-            "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
-            "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
-        },
+          "months": "<b>{}</b>"
+        }
     },
     "actions": {
         "on-click-right": "mode",
