@@ -4,7 +4,8 @@
   "margin-right": 3,
   "margin-top": 2,
   "modules-left": [
-    "hyprland/workspaces"
+    "hyprland/workspaces",
+    "mpris"
   ],
   "modules-center": [
     "clock"
@@ -17,6 +18,19 @@
     "hyprland/language",
     "battery"
   ],
+  "mpris": {
+	  "format": "{player_icon} {title} - {artist}",
+	  "format-paused": "{status_icon} {title} - {artist}",
+	  "player-icons": {
+		  "default": "▶",
+		  "mpv": "🎵"
+	  },
+	  "status-icons": {
+		  "paused": "⏸"
+	  },
+	  "ignored-players": ["firefox"],
+	  "tooltip-format": "Artist: {artist}\nTrack: {title}\nAlbum: {album}"
+  },
   "battery": {
     "interval": 60,
     "states": {

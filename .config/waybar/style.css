@@ -41,13 +41,35 @@ window#waybar {
   box-shadow: none;
 }
 
+#mpris {
+  margin: 0 3px;
+  background-color: alpha(@surface_dim, 0.8);
+  color: @tertiary;
+  padding: 0 8px;
+  border-radius: 50px;
+  transition: all 0.3s ease-in-out;
+}
+
+#mpris:hover {
+  background-color: @tertiary;
+  color: @surface_dim;
+}
+
+#mpris.paused {
+  color: @primary;
+}
+
+#mpris.paused:hover {
+  background-color: @primary;
+  color: @surface_dim;
+}
+
 #clock {
   margin: 0 3px;
   background-color: alpha(@surface_dim, 0.8);
   color: @primary;
   padding: 0 10px;
   border-radius: 50px;
-  border: 2px;
   transition: all 0.3s ease-in-out;
 }
 
@@ -83,7 +105,6 @@ tooltip calendar {
   color: @primary;
   padding: 0 5px;
   border-radius: 50px;
-  border: 2px;
 }
 
 #tray {
