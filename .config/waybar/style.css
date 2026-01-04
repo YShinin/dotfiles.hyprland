@@ -1,9 +1,15 @@
+@import "colors.css";
+
 * {
   font-family: "JetBrainsMono Nerd Font Propo", "SF Pro Display";
   min-height: 0;
   margin: 0 0;
   padding: 1px 0;
   font-size: 13px;
+  
+  /* white fix */
+  background-image: none; 
+  box-shadow: none;       
 }
 
 window#waybar {
@@ -17,20 +23,20 @@ window#waybar {
   margin: 0 3px;
   border-radius: 40px;
   color: transparent;
-  background-color: alpha(#121212, 0.5);
+  background-color: alpha(@surface, 0.5);
   transition: all 0.3s ease-in-out;
 }
 
 #workspaces button.active {
   min-width: 50px;
-  color: #e8e8e8;
-  background-color: alpha(#232323, 0.8);
+  color: @primary;
+  background-color: alpha(@surface_dim, 0.8);
   transition: all 0.3s ease-in-out;
 }
 
 #workspaces button:hover {
-  color: #121212;
-  background-color: #e8e8e8;
+  color: @surface_bright;
+  background-color: @primary;
   min-width: 50px;
 }
 
@@ -42,9 +48,24 @@ window#waybar {
 #language,
 #battery {
   margin: 0 3px;
-  background-color: alpha(#232323, 0.8);
-  color: #e8e8e8;
+  background-color: alpha(@surface_dim, 0.8);
+  color: @primary;
   padding: 0 10px;
   border-radius: 50px;
   border: 2px;
+  transition: all 0.3s ease-in-out;
+}
+
+#tray{
+  color: #e8e8e8;
+}
+
+#clock:hover,
+#bluetooth:hover,
+#network:hover,
+#pulseaudio:hover,
+#language:hover,
+#battery:hover {
+  color: @surface_dim;
+  background-color: @primary;
 }
