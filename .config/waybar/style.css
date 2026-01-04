@@ -40,7 +40,16 @@ window#waybar {
   min-width: 50px;
 }
 
-#clock,
+#clock {
+  margin: 0 3px;
+  background-color: alpha(@surface_dim, 0.8);
+  color: @primary;
+  padding: 0 10px;
+  border-radius: 50px;
+  border: 2px;
+  transition: all 0.3s ease-in-out;
+}
+
 #tray,
 #bluetooth,
 #network,
@@ -48,9 +57,16 @@ window#waybar {
 #language,
 #battery {
   margin: 0 3px;
+  padding: 0 5px;
+  border-radius: 30px;
+  border: 2px;
+}
+
+.modules-right {
+  margin: 0 3px;
   background-color: alpha(@surface_dim, 0.8);
   color: @primary;
-  padding: 0 10px;
+  padding: 0 5px;
   border-radius: 50px;
   border: 2px;
   transition: all 0.3s ease-in-out;
