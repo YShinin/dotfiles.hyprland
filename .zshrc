@@ -115,3 +115,8 @@ if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
 fi
 
 alias pi='sudo pacman -S'
+
+mkcd(){
+	mkdir -p "$1" && cd "$1"
+}
+
