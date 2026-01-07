@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# doesnt work with spaces in file names
 
 default_wd="$HOME/.config/wallpaper/"
 default_cd="$HOME/.cache/wallpaper-changer/"
@@ -8,12 +9,10 @@ while [[ -n "$1" ]]; do
     -wd | --wallpaper-directory)
       shift
       wallpaper_directory="$1"
-      shift
       ;;
     -cd | --cache-directory)
       shift
       cache_directory="$1"
-      shift
       ;;
     -h | --help)
       echo "Usage: $(basename "$0") [args]
@@ -31,6 +30,7 @@ while [[ -n "$1" ]]; do
       exit 1
       ;;
   esac
+  shift
 done
 
 if [[ -z $wallpaper_directory ]]; then
@@ -42,23 +42,40 @@ if [[ ! (-d $wallpaper_directory) ]]; then
   exit 3
 fi
 
-ls_result=$(ls *.png *.jpg)
+# ^ ANCHER TO THE START OF LINE
+# [^.]+ ANY CHARACTER EXCEPT DOR ONE OR MORE TIME
+# \. SECURED DOT
+# (...)$ ONE OF EXTENTIONS AT THE END
+ls_result=$(ls "$wallpaper_directory" | grep -E "^[^.]+\.(png|jpg|webm|jpeg)$")
 
 
-if [[ -z ls_result ]]; then
-  echo "$(wallpaper_directory) has no image files"
+if [[ -z "$ls_result" ]]; then
+  echo "$wallpaper_directory has no image files"
   exit 4
 fi
 
-# if [[ ! ( -d )]]
+echo "wd - $wallpaper_directory    ls result - $ls_result   ls result len ${#ls_result} "
 
-for output in $ls_result
+if [[ -z "$cache_directory" ]]; then
+  cache_directory=${default_cd}
+fi
+
+if [[ -e "$cache_directory" ]]; then
+  if [[ ! ( -d "$cache_directory" ) ]]; then
+    echo "$cache_directory exists and it is not a directory"
+    exit 5
+  fi
+else
+  mkdir -p "$cache_directory"
+fi
+
+chosen_image=$( for image_without_path in $ls_result
 do
-  ls_basename_list+=$(basename -s .* "$output")"|"
-done
-
-ls_basename_list[-1]=$(basename -s '|' "$ls_basename_list")
-
-chosen_image=$(echo "$ls_basename_list" | rofi -sep "|" -dmenu)
+  image_without_extention=$(basename -s .* "$image_without_path")
+  if [[ ! ( -f "${cache_directory}${image_without_path}")]]; then
+    magick convert "${wallpaper_directory}${image_without_path}" -resize 300x200 "${cache_directory}${image_without_path}"
+  fi
+  echo -en "${image_without_extention}\0icon\x1f${cache_directory}${image_without_path}\n"
+done | rofi -show-icons -dmenu -no-config )
 
 echo "$chosen_image"
