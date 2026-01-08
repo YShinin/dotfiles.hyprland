@@ -3,4 +3,4 @@ color_space = "lab"
 check_contrast = true
 
 [templates]
-kitty = { src='kitty.conf', dst='~/.config/kitty/colors.conf'}
+kitty = { src='kitty.conf', dst='~/.config/kitty/colors-raw.conf'}
