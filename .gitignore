@@ -3,4 +3,5 @@
 .config/waybar/colors.css
 .config/hypr/hypr-colors.conf
 .config/kitty/colors.conf
-.confit/kitty/colors-tweaked.conf
+.config/kitty/colors-tweaked.conf
+.config/hypr/modules/current-wallpaper.conf
