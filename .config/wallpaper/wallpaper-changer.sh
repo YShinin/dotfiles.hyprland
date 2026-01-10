@@ -142,7 +142,7 @@ chosen_image=$(
     target_cache_file="${cache_directory%/}/${image_file}"
     
     if [[ ! -f $target_cache_file ]]; then
-      magick "${image_file}" -resize 300x200 "${target_cache_file}"
+      magick "${image_file}" -resize "300x300^" -gravity center -extent 300x300 "${target_cache_file}"
     fi
     echo -en "${image_without_extention}\0icon\x1f${target_cache_file}\n"
 done | rofi -show-icons -dmenu -config ${rasi_file})

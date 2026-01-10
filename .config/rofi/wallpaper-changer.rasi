@@ -1,20 +1,14 @@
 * {
-    width: 600;
     font: "JetBrainsMono Nerd Font 14";
+    background-color: transparent;
 }
 
 @import "./colors.rasi"
 @import "./fonts.rasi"
 
-element-text, element-icon, mode-switcher {
-    background-color: inherit;
-    text-color: inherit;
-    border-radius: 20px;
-    font: @font;
-    highlight: none; 
-}
 
 window {
+    width: 50em;
     border: 3px;
     border-color: transparent;
     transparency: "real";
@@ -67,7 +61,8 @@ entry {
 }
 
 listview {
-    layout: vertical;
+    layout: horizontal;
+    columns: 1;
     border: 0px;
     padding: 4px 0px 13px;
     background-color: transparent;
@@ -78,23 +73,32 @@ listview {
     font: @font;
 }
 
+element normal.normal, 
+element alternate.normal, 
 element {
-    padding: 5px;
     border-radius: 15px;
     font: @font;
     background-color: transparent;
     text-color: @primary;
+    orientation: vertical;
+}
+
+element selected.normal,
+element selected {
+    background-color: @primary-alpha;
+    border-radius: 15px;
+    text-color: @tertiary;
+    font: @font;
 }
 
 element-icon {
-    size: 15em;
+    border-radius: 0.5em;
+    vertical-align: 0;
+    margin: 0.2em 0.2em 0em 0.2em;
+    size: 10em;
     font: @font;
 }
 
-element selected {
-    background-color: @tertiary;
-    border-radius: 15px;
-    text-color: @surface;
-    font: @font;
+element-text {
+    horizontal-align: 0.5;
 }
-
