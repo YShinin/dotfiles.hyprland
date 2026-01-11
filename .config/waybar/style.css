@@ -28,8 +28,8 @@ window#waybar {
 
 #workspaces button.active {
   min-width: 50px;
-  border-width: 2px;
-  border-color: alpha(@tertiary, 0.5);
+  border-width: 1px;
+  border-color: alpha(@tertiary, 0.7);
   color: @primary;
   background-color: alpha(@surface_dim, 0.8);
   transition: all 0.3s ease-in-out;
