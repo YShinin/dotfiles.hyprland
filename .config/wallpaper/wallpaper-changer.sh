@@ -1,24 +1,33 @@
 #!/usr/bin/env bash
 # doesnt work with spaces in file names
 
+if ! command -v swww > /dev/null 2>&1 ; then
+  notify-send "ERROR: Wallpaper changer" "Dependences check failed, make sure you have swww in \$PATH"
+  exit 1
+fi
+
+if ! command -v hyprctl > /dev/null 2>&1 ; then
+  notify-send "ERROR: Wallpaper changer" "Dependences check failed, make sure you have hyprctl in \$PATH"
+  exit 1
+fi
 
 if ! command -v magick > /dev/null 2>&1 ; then
-  notify-send -t 3000 "ERROR: Wallpaper changer" "Dependences check failed, make sure you have magick in \$PATH"
+  notify-send "ERROR: Wallpaper changer" "Dependences check failed, make sure you have magick in \$PATH"
   exit 1
 fi
 
 if ! command -v matugen > /dev/null 2>&1 ; then
-  notify-send -t 3000 "ERROR: Wallpaper changer" "Dependences check failed, make sure you have matugen in \$PATH"
+  notify-send "ERROR: Wallpaper changer" "Dependences check failed, make sure you have matugen in \$PATH"
   exit 1
 fi
 
 if ! command -v wallust > /dev/null 2>&1 ; then
-  notify-send -t 3000 "ERROR: Wallpaper changer" "Dependences check failed, make sure you have wallust in \$PATH"
+  notify-send "ERROR: Wallpaper changer" "Dependences check failed, make sure you have wallust in \$PATH"
   exit 1
 fi
 
 if ! command -v python > /dev/null 2>&1 ; then
-  notify-send -t 3000 "ERROR: Wallpaper changer" "Dependences check failed, make sure you have python in \$PATH"
+  notify-send "ERROR: Wallpaper changer" "Dependences check failed, make sure you have python in \$PATH"
   exit 1
 fi
 
@@ -95,7 +104,7 @@ while [[ -n "$1" ]]; do
       exit
       ;;
     *)
-      notify-send -t 3000 "ERROR: Wallpaper changer" "Unexpected argument: ${1}. Use -h or --help for more information." 
+      notify-send "ERROR: Wallpaper changer" "Unexpected argument: ${1}. Use -h or --help for more information." 
       exit 1
       ;;
   esac
@@ -103,18 +112,8 @@ while [[ -n "$1" ]]; do
 done
 
 if [[ ! (-d $wallpaper_directory) ]]; then
-  notify-send -t 3000 "ERROR: Wallpaper changer" "${wallpaper_directory} doesn't exist" 
+  notify-send "ERROR: Wallpaper changer" "${wallpaper_directory} doesn't exist" 
   exit 2
-fi
-
-if [[ ! -f $kitty_colors_raw ]]; then
-  notify-send -t 3000 "ERROR: Wallpaper changer" "${kitty_colors_raw} doesn't exist" 
-  exit 3
-fi
-
-if [[ ! -f $kitty_colors_tweaked ]]; then
-  notify-send -t 3000 "ERROR: Wallpaper changer" "${kitty_colors_tweaked} doesn't exist" 
-  exit 3
 fi
 
 shopt -s nullglob
@@ -122,7 +121,7 @@ shopt -s nocaseglob
 
 if [[ -e "$cache_directory" ]]; then
   if [[ ! ( -d "$cache_directory" ) ]]; then
-    notify-send -t 3000 "ERROR: Wallpaper changer" "$cache_directory exists and it is not a directory"
+    notify-send "ERROR: Wallpaper changer" "${cache_directory} exists and it is not a directory"
     exit 2
   fi
 else
@@ -137,7 +136,6 @@ chosen_image=$(
     [[ -e "$image_file" ]] || continue
 
     image_without_extention="${image_file%.*}"
-    notify-send "image file is ${image_file}" "image_without_extention ${image_without_extention}"
     
     target_cache_file="${cache_directory%/}/${image_file}"
     
@@ -153,7 +151,7 @@ if [[ ! -f $wallpaper_hypr_config ]]; then
   touch $wallpaper_hypr_config
 
   if [[ ! $? ]]; then
-    notify-send -t 3000 "ERROR: Wallpaper changer" "Coudn't create config file in {$wallpaper_hypr_config}, verify if directory is persent"
+    notify-send "ERROR: Wallpaper changer" "Coudn't create config file in {$wallpaper_hypr_config}, verify if directory is persent"
     exit 2
   fi
 fi
@@ -175,7 +173,7 @@ if [[ -z $wallpaper_in_config || $wallpaper_in_config != ${chosen_image} ]]; the
   echo "\$wallpaper_in_config = ${chosen_image}" > ${wallpaper_hypr_config}
   
   if [[ ! $? ]]; then
-    notify-send -t 3000 "ERROR: Wallpaper changer" "Couldn't write new wallpaper path in ${wallpaper_hypr_config}"
+    notify-send "ERROR: Wallpaper changer" "Couldn't write new wallpaper path in ${wallpaper_hypr_config}"
     exit 3
   fi
   
@@ -185,11 +183,20 @@ if [[ -z $wallpaper_in_config || $wallpaper_in_config != ${chosen_image} ]]; the
   hyprctl reload
   
   wallust run $chosen_image
-  python $kitty_python_script $kitty_colors_raw $kitty_colors_tweaked
-  killall -SIGUSR1 kitty
   
-  notify-send -t 3000 "Wallpaper changer" "Wallpaper changed"
+  if [[ ! -f $kitty_python_script ]]; then
+    notify-send "ERROR: Wallpaper changer" "Python script for kitty wasn't found in ${kitty_python_script}"
+  else  
+    if [[ ! -f $kitty_colors_raw ]]; then
+      notify-send "ERROR: Wallpaper changer" "Couldn't find ${kitty_colors_raw}, make sure your templates in wallust setted properly."
+    else
+      python $kitty_python_script $kitty_colors_raw $kitty_colors_tweaked
+      killall -SIGUSR1 kitty
+    fi
+  fi
+  
+  notify-send "Wallpaper changer" "Wallpaper changed"
 else
-  notify-send -t 3000 "Wallpaper changer" "No changes"
+  notify-send "Wallpaper changer" "No changes"
 fi
   
