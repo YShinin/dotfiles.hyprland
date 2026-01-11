@@ -19,6 +19,8 @@ window#waybar {
   font-size: 12px;
   margin: 0 3px;
   border-radius: 40px;
+  border-width: 1px;
+  border-color: alpha(@primary, 0.3);
   color: transparent;
   background-color: alpha(@surface, 0.5);
   transition: all 0.3s ease-in-out;
@@ -26,6 +28,8 @@ window#waybar {
 
 #workspaces button.active {
   min-width: 50px;
+  border-width: 2px;
+  border-color: alpha(@tertiary, 0.5);
   color: @primary;
   background-color: alpha(@surface_dim, 0.8);
   transition: all 0.3s ease-in-out;
