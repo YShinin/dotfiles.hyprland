@@ -177,7 +177,10 @@ if [[ -z $wallpaper_in_config || $wallpaper_in_config != ${chosen_image} ]]; the
     exit 3
   fi
   
-  swww img $chosen_image
+  transition_y="0.$((1 + $RANDOM % 9))"
+  transition_x="0.$((1 + $RANDOM % 9))"
+  
+  swww img $chosen_image --transition-type grow --transition-pos "${transition_x}, ${transition_y}" --transition-fps 60 --transition-bezier 0.87,0.08,0.4,0.85 --transition-duration 1.5
   
   matugen image $chosen_image
   hyprctl reload
