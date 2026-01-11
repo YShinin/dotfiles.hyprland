@@ -8,13 +8,12 @@
 
 
 window {
-    width: 50em;
+    width: 52em;
     border: 3px;
     border-color: transparent;
     transparency: "real";
     background-color: @surface-alpha;
     border-radius: 20px;
-    padding: 0px 20px 0px 0px;
     font: @font;
 }
 
@@ -61,14 +60,17 @@ entry {
 }
 
 listview {
-    layout: horizontal;
-    columns: 1;
+    layout: vertical;
+    flow: horizontal;
+    columns: 5;
     border: 0px;
-    padding: 4px 0px 13px;
     background-color: transparent;
-    margin: 0px 0px 0px 20px;
     fixed-height: false;
-    lines: 7;
+    fixed-columns: true;
+    spacing: 0;
+    padding: 0;
+    margin: 0;
+    lines: 2;
     border-radius: 0px;
     font: @font;
 }
@@ -76,6 +78,8 @@ listview {
 element normal.normal, 
 element alternate.normal, 
 element {
+    padding: 0;
+    margin: 0;
     border-radius: 15px;
     font: @font;
     background-color: transparent;
@@ -85,6 +89,8 @@ element {
 
 element selected.normal,
 element selected {
+    padding: 0;
+    margin: 0;
     background-color: @primary-alpha;
     border-radius: 15px;
     text-color: @tertiary;
@@ -94,6 +100,7 @@ element selected {
 element-icon {
     border-radius: 0.5em;
     vertical-align: 0;
+    horizontal-align: 0.5;
     margin: 0.2em 0.2em 0em 0.2em;
     size: 10em;
     font: @font;
@@ -101,4 +108,5 @@ element-icon {
 
 element-text {
     horizontal-align: 0.5;
+    padding: 0em 0em 0.2em 0em;
 }
