@@ -5,3 +5,5 @@
 .config/kitty/colors.conf
 .config/kitty/colors-tweaked.conf
 .config/hypr/modules/current-wallpaper.conf
+.config/gtk-3.0/colors.css
+.config/gtk-4.0/colors.css
