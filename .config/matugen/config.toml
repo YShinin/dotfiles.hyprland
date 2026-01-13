@@ -2,12 +2,6 @@
 default_mode = "dark"
 filter_mode = "expressive"
 
-[templates.kitty]
-# Путь относительно ~/.config/matugen/
-input_path = 'templates/kitty.conf'
-# Выходим из .config/matugen/ (два шага назад) и заходим в .cache
-output_path = '../../.cache/matugen/kitty.conf'
-
 [templates.hyprland]
 input_path = '~/.config/matugen/templates/hyprland-colors.conf'
 output_path = '~/.config/hypr/hypr-colors.conf'
@@ -26,7 +20,6 @@ output_path = '~/.config/rofi/colors.rasi'
 input_path = '~/.config/matugen/templates/gtk.css'
 output_path = '~/.config/gtk-3.0/colors.css'
 post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3; gsettings set org.gnome.desktop.interface color-scheme prefer-dark'
-# post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3-{{mode}}'
 
 [templates.gtk4]
 input_path = '~/.config/matugen/templates/gtk.css'
