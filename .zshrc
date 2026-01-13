@@ -115,8 +115,15 @@ if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
 fi
 
 alias pi='sudo pacman -S'
+alias yi='yay -S'
+alias psr='sudo pacman -Ss'
+alias ysr='yay -Ss'
 
 mkcd(){
 	mkdir -p "$1" && cd "$1"
 }
 
+
+
+export VISUAL=nvim
+export EDITOR=nvim
