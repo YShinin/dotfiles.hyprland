@@ -1,0 +1,168 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "source": "~/.config/fastfetch/arch-logo.txt",
+    "type": "file",
+    "padding": {
+      "top": 1,
+      "left": 3,
+      "right": 5
+    },
+    "color": {
+      "1": "red"
+    }
+  },
+  "display": {
+    "size": {
+      "binaryPrefix": "jedec"
+    },
+    "bar": {
+      "width": 10, // Width of percentage bars
+      "char": {
+        "elapsed": "⠶", // Character for elapsed portion
+        "total": "⠤" // Character for total portion
+      },
+      "border": {
+        "left": "|",
+        "right": "|"
+      }
+    },
+    "color": {
+      "separator": "blue"
+    },
+    "separator": " ",
+    "constants": [
+      "   »»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»»"
+    ]
+  },
+  "modules": [
+    "break",
+    "break",
+    {
+      "type": "uptime",
+      "key": "Uptime       ",
+      "keyColor": "red"
+    },
+    "break",
+    {
+      "type": "custom",
+      "key": "Software",
+      "keyColor": "red"
+    },
+    {
+      "type": "os",
+      "key": " ├──Distro   ",
+      "keyColor": "magenta",
+      "format": "{pretty-name}"
+    },
+    // {
+    //   "type": "custom",
+    //   "format": "{$1}",
+    //   "outputColor": "separator"
+    // },
+    {
+      "type": "shell",
+      "key": " ├──Shell    ",
+      "format": "{pretty-name}",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "terminal",
+      "key": " └──Terminal ",
+      "format": "{pretty-name}",
+      "keyColor": "magenta"
+    },
+    // {
+    //   "type": "terminalfont",
+    //   "key": "   Font     ",
+    //   "keyColor": "green"
+    // },
+    // {
+    //   "type": "packages",
+    //   "key": "   Packages ",
+    //   "keyColor": "green"
+    // },
+    // {
+    //   "type": "localip",
+    //   "key": "   Local IP ",
+    //   "keyColor": "green"
+    // },
+    // {
+    //   "type": "custom",
+    //   "format": "{$1}",
+    //   "outputColor": "separator"
+    // },
+    // {
+    //   "type": "display",
+    //   "key": "   Display  ",
+    //   "keyColor": "cyan"
+    // },
+    "break",
+    {
+      "type": "custom",
+      "key": "Hardware",
+      "keyColor": "red"
+    },
+    {
+      "type": "cpu",
+      "key": " ├──CPU      ",
+      "format": "{name}",
+      "keyColor": "magenta"
+    },
+    {
+      "type": "gpu",
+      "key": " ├──GPU      ",
+      "format": "{name}",
+      "keyColor": "magenta"
+    },
+    // {
+    //   "type": "swap",
+    //   "key": "   SWAP     ",
+    //   "keyColor": "cyan"
+    // },
+    {
+      "type": "disk",
+      "key": " ├──Disk     ",
+      "format": "{size-percentage-bar} => {size-used} of {size-total}",
+      "percent": {
+        "type": 3 // Тип 3 обычно включает и число, и бар (или используйте 9 для цветного числа)
+      },
+      "keyColor": "magenta"
+    },
+    {
+      "type": "memory",
+      "key": " └──RAM      ",
+      "format": "{percentage-bar} => {used} of {total}",
+      "percent": {
+        "type": 3 // Тип 3 обычно включает и число, и бар (или используйте 9 для цветного числа)
+      },
+      "keyColor": "magenta"
+    },
+    // {
+    //   "type": "battery",
+    //   "key": "   Battery  ",
+    //   "keyColor": "yellow"
+    // },
+    "break",
+    {
+      "type": "colors",
+      "paddingLeft": 14,
+      "symbol": "diamond"
+    },
+    // {
+    //   "type": "custom",
+    //   "format": "     󰍛 󰋊 󰓇  󰄲",
+    //   "outputColor": "yellow"
+    // },
+    // {
+    //   "type": "custom",
+    //   "format": "{$1}",
+    //   "outputColor": "separator"
+    // },
+    "break"
+    // {
+    // "type": "colors"
+    // "paddingLeft": 7
+    // }
+  ]
+}
