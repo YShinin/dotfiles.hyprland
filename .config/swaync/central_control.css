@@ -1,9 +1,8 @@
-@define-color text @foreground;
-@define-color background-alt alpha(@color1, .4);
-@define-color selected @color6;
-@define-color hover alpha(@selected, .4);
-@define-color urgent @color2;
-@import "./colors.css";
+@define-color text @on_surface;
+@define-color background-alt alpha(@surface_container, .4);
+@define-color selected @primary;
+@define-color hover alpha(@surface_bright, .4);
+@define-color urgent @error;
 
 * {
   color: @text;
@@ -27,10 +26,8 @@
   border-radius: 24px;
   border: 1px solid @selected;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, .6);
-  margin: 18px;
+  margin: 6px 6px;
   padding: 12px;
-  min-height: 700px;
-  max-height: 800px;
 }
 
 /* Notifications  */
@@ -68,6 +65,14 @@
 
 .control-center .notification-row .notification-background .notification>*:last-child>* .notification-action:active {
   background-color: @selected;
+}
+
+.notification-row:last-child .notification-background {
+  background: alpha(@background, 0.9);
+}
+
+.control-center .notification-row .notification-background {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
 }
 
 /* Buttons */
@@ -186,14 +191,14 @@ progressbar {
 /* Buttons menu */
 .widget-buttons-grid {
   font-size: x-large;
-  padding: 6px 2px;
+  padding: 6px 4px;
   margin: 6px;
   border-radius: 12px;
   background: @background-alt;
 }
 
 .widget-buttons-grid>flowbox>flowboxchild>button {
-  margin: 4px 10px;
+  margin: 4px 18px;
   padding: 6px 12px;
   background: transparent;
   border-radius: 8px;
@@ -210,6 +215,10 @@ progressbar {
   border-radius: 16px;
   color: @text;
   margin: 20px 6px;
+}
+
+picture.mpris-background {
+  opacity: 0;
 }
 
 /* NOTE: Background need *opacity 1* otherwise will turn into the album art blurred  */
