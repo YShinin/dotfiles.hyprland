@@ -1,0 +1,12 @@
+[[plugin.deps]]
+use = "walldmtd/fs-usage"
+rev = "209128d"
+hash = "acbca63727c01bd5809ac8c2212fe678"
+
+[[plugin.deps]]
+use = "Joao-Queiroga/drag"
+rev = "2760668"
+hash = "3360123b833e8ce6a5b64a46f1a3ceb9"
+
+[flavor]
+deps = []

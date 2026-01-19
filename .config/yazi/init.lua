@@ -1,0 +1,1 @@
+require("fs-usage"):setup()
