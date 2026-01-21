@@ -37,6 +37,10 @@ if ! command -v notify-send > /dev/null 2>&1 ; then
   exit 1
 fi
 
+error_notification(){
+  notify-send --urgency critical -t 4000 "ERROR: Wallpaper changer" "${1}" 
+}
+
 default_wd="$HOME/.config/wallpaper/"
 default_cd="$HOME/.cache/wallpaper-changer/"
 default_hc="$HOME/.config/hypr/modules/current-wallpaper.conf"
@@ -104,7 +108,7 @@ while [[ -n "$1" ]]; do
       exit
       ;;
     *)
-      notify-send "ERROR: Wallpaper changer" "Unexpected argument: ${1}. Use -h or --help for more information." 
+      error_notification "Unexpected argument: ${1}.\nUse -h or --help for more information." 
       exit 1
       ;;
   esac
@@ -112,7 +116,7 @@ while [[ -n "$1" ]]; do
 done
 
 if [[ ! (-d $wallpaper_directory) ]]; then
-  notify-send "ERROR: Wallpaper changer" "${wallpaper_directory} doesn't exist" 
+  error_notification "${wallpaper_directory} doesn't exist" 
   exit 2
 fi
 
@@ -121,14 +125,14 @@ shopt -s nocaseglob
 
 if [[ -e "$cache_directory" ]]; then
   if [[ ! ( -d "$cache_directory" ) ]]; then
-    notify-send "ERROR: Wallpaper changer" "${cache_directory} exists and it is not a directory"
+    error_notification "${cache_directory} exists and it is not a directory"
     exit 2
   fi
 else
   mkdir -p "$cache_directory"
 fi
 
-cd "$wallpaper_directory" || { notify-send "ERROR: Wallpaper changer" "cd ${wallpaper_directory} failed"; exit 1; }
+cd "$wallpaper_directory" || { error_notification "cd ${wallpaper_directory} failed"; exit 1; }
 
 chosen_image=$(
   for image_file in *.{png,jpg,jpeg}; do
@@ -151,7 +155,7 @@ if [[ ! -f $wallpaper_hypr_config ]]; then
   touch $wallpaper_hypr_config
 
   if [[ ! $? ]]; then
-    notify-send "ERROR: Wallpaper changer" "Coudn't create config file in {$wallpaper_hypr_config}, verify if directory is persent"
+    error_notification "Coudn't create config file in {$wallpaper_hypr_config}, verify if directory is persent"
     exit 2
   fi
 fi
@@ -161,7 +165,7 @@ found_file=$(find . -maxdepth 1 -name "${chosen_image}.*" -print -quit)
 chosen_image=$(basename "$found_file")
 
 if [[ -z "$chosen_image" ]]; then
-    notify-send "ERROR: Wallpaper changer" "Could not find image file for selection"
+    error_notification "Could not find image file for selection"
     exit 1
 fi
 
@@ -173,7 +177,7 @@ if [[ -z $wallpaper_in_config || $wallpaper_in_config != ${chosen_image} ]]; the
   echo "\$wallpaper_in_config = ${chosen_image}" > ${wallpaper_hypr_config}
   
   if [[ ! $? ]]; then
-    notify-send "ERROR: Wallpaper changer" "Couldn't write new wallpaper path in ${wallpaper_hypr_config}"
+    error_notification "Couldn't write new wallpaper path in ${wallpaper_hypr_config}"
     exit 3
   fi
   
@@ -188,18 +192,18 @@ if [[ -z $wallpaper_in_config || $wallpaper_in_config != ${chosen_image} ]]; the
   wallust run $chosen_image
   
   if [[ ! -f $kitty_python_script ]]; then
-    notify-send "ERROR: Wallpaper changer" "Python script for kitty wasn't found in ${kitty_python_script}"
+    error_notification "Python script for kitty wasn't found in ${kitty_python_script}"
   else  
     if [[ ! -f $kitty_colors_raw ]]; then
-      notify-send "ERROR: Wallpaper changer" "Couldn't find ${kitty_colors_raw}, make sure your templates in wallust setted properly."
+      error_notification "Couldn't find ${kitty_colors_raw}, make sure your templates in wallust setted properly."
     else
       python $kitty_python_script $kitty_colors_raw $kitty_colors_tweaked
       killall -SIGUSR1 kitty
     fi
   fi
   
-  notify-send "Wallpaper changer" "Wallpaper changed"
+  notify-send -e -t 2000 "Wallpaper changer" "Wallpaper changed"
 else
-  notify-send "Wallpaper changer" "No changes"
+  notify-send -e -t 2000 "Wallpaper changer" "No changes"
 fi
   
