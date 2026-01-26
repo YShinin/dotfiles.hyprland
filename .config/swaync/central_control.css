@@ -71,8 +71,13 @@
   background: alpha(@background, 0.9);
 }
 
+.notification-group:not(.collapsed) .notification-row:last-child .notification-background {
+  background-color: @background-alt;
+}
+
+/* black shadow for notifications */
 .control-center .notification-row .notification-background {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 6px -1px alpha(@background, 0.9);
 }
 
 /* Buttons */
