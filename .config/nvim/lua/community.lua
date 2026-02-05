@@ -8,5 +8,7 @@
 return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.lua" },
+  { import = "astrocommunity.pack.cs-omnisharp" },
+  { import = "astrocommunity.lsp.sonarlint-nvim" },
   -- import/override with your plugins folder
 }
