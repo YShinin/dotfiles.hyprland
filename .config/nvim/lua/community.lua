@@ -8,6 +8,5 @@
 return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.lua" },
-  { import = "astrocommunity.lsp.sonarlint-nvim" },
   { import = "astrocommunity.test.neotest" },
 }
