@@ -123,7 +123,8 @@ mkcd(){
 	mkdir -p "$1" && cd "$1"
 }
 
-
+alias mic-create='pactl load-module module-null-sink sink_name=VirtualMic sink_properties=device.description="Laptop_Mic"'
+alias mic-connect='ssh yshine@ArchLp.local "systemd-inhibit --what=handle-lid-switch:sleep --who=ReaperStream --why=Recording parec --format=s16le --rate=48000 --channels=1" | pacat --format=s16le --rate=48000 --channels=1 --device=VirtualMic'
 
 export VISUAL=nvim
 export EDITOR=nvim
