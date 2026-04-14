@@ -1,0 +1,120 @@
+* {
+  font-family: "JetBrainsMono Nerd Font Propo", "SF Pro Display";
+  min-height: 0;
+  margin: 0 0;
+  padding: 1px 0 1 0;
+  font-size: 13px;
+
+}
+
+window#waybar {
+  background-color: @background;
+}
+
+#workspaces button {
+  padding: 0 6px;
+  margin: 0 3px;
+  font-size: 12px;
+  margin: 0 3px;
+  border-radius: 5px;
+  border-width: 1px;
+  border-color: alpha(@primary, 0.3);
+  color: transparent;
+  background-color: alpha(@surface, 0.5);
+  transition: all 0.3s ease-in-out;
+}
+
+#workspaces button.active {
+  border-width: 1px;
+  border-color: alpha(@tertiary, 0.7);
+  color: @primary;
+  background-color: alpha(@surface_dim, 0.8);
+  transition: all 0.3s ease-in-out;
+}
+
+#workspaces button:hover {
+  color: @surface_bright;
+  background-color: @primary;
+  transition: all 0.3s ease-in-out;
+  /* white fix */
+  background-image: none;
+  box-shadow: none;
+}
+
+#mpris {
+  margin: 0 3px;
+  color: @tertiary;
+  padding: 0 8px;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+#mpris:hover {
+  background-color: @tertiary;
+  color: @surface_dim;
+}
+
+#mpris.paused {
+  color: @primary;
+}
+
+#mpris.paused:hover {
+  background-color: @primary;
+  color: @surface_dim;
+}
+
+#clock {
+  margin: 0 3px;
+  background-color: transparent;
+  color: @primary;
+  padding: 0 10px;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+tooltip {
+  background-color: alpha(@surface_dim, 0.8);
+  border-radius: 10px;
+}
+
+tooltip label {
+  color: @tertiary;
+  margin: 10px 10px;
+}
+
+tooltip calendar {
+  font-size: 33px;
+}
+
+#tray,
+#bluetooth,
+#network,
+#pulseaudio,
+#language,
+#battery {
+  margin: 0 2px;
+  padding: 0 7px;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.modules-right {
+  margin: 0 3px;
+  color: @primary;
+  padding: 0 5px;
+  border-radius: 5px;
+}
+
+#tray {
+  color: #e8e8e8;
+}
+
+#clock:hover,
+#bluetooth:hover,
+#network:hover,
+#pulseaudio:hover,
+#language:hover,
+#battery:hover {
+  color: @surface_dim;
+  background-color: @primary;
+}
