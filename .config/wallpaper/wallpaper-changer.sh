@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # doesnt work with spaces in file names
 
-if ! command -v swww > /dev/null 2>&1 ; then
-  notify-send "ERROR: Wallpaper changer" "Dependences check failed, make sure you have swww in \$PATH"
+if ! command -v awww > /dev/null 2>&1 ; then
+  notify-send "ERROR: Wallpaper changer" "Dependences check failed, make sure you have awww in \$PATH"
   exit 1
 fi
 
@@ -184,9 +184,9 @@ if [[ -z $wallpaper_in_config || $wallpaper_in_config != ${chosen_image} ]]; the
   transition_y="0.$((1 + $RANDOM % 9))"
   transition_x="0.$((1 + $RANDOM % 9))"
   
-  swww img $chosen_image --transition-type grow --transition-pos "${transition_x}, ${transition_y}" --transition-fps 60 --transition-bezier 0.87,0.08,0.4,0.85 --transition-duration 1.5
+  awww img $chosen_image --transition-type grow --transition-pos "${transition_x}, ${transition_y}" --transition-fps 60 --transition-bezier 0.87,0.08,0.4,0.85 --transition-duration 1.5
   
-  matugen image $chosen_image
+  matugen image $chosen_image --source-color-index 0 
   hyprctl reload
   
   wallust run $chosen_image
